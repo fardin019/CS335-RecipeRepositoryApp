@@ -37,4 +37,25 @@ public class AddRecipes extends AppCompatActivity {
     EditText addIngredient7=(EditText) findViewById(R.id.editTextTextPersonName11);
     String Ingredient7= addIngredient7.getText().toString();//add ingredient no7
 
+    EditText addQuantity1=(EditText) findViewById(R.id.editTextTextPersonName2);
+    String Quantity1= addQuantity1.getText().toString();//add quantity for ingredient no1
+
+    EditText addQuantity2=(EditText) findViewById(R.id.editTextTextPersonName4);
+    String Quantity2= addQuantity2.getText().toString();//add quantity for ingredient no2
+
+    EditText addQuantity3=(EditText) findViewById(R.id.editTextTextPersonName5);
+    String Quantity3= addQuantity3.getText().toString();//add quantity for ingredient no3
+
+    EditText addQuantity4=(EditText) findViewById(R.id.editTextTextPersonName6);
+    String Quantity4= addQuantity4.getText().toString();//add quantity for ingredient no4
+
+    EditText addQuantity5=(EditText) findViewById(R.id.editTextTextPersonName12);
+    String Quantity5= addQuantity5.getText().toString();//add quantity for ingredient no5
+
+    EditText addQuantity6=(EditText) findViewById(R.id.editTextTextPersonName13);
+    String Quantity6= addQuantity6.getText().toString();//add quantity for ingredient no6
+
+    EditText addQuantity7=(EditText) findViewById(R.id.editTextTextPersonName14);
+    String Quantity7= addQuantity7.getText().toString();//add quantity for ingredient no7
+
 }
