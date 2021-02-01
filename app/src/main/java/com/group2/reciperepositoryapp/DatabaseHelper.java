@@ -12,6 +12,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String INGREDIENT_TABLE = "ingredient";
     private static final String RECIPE_INGREDIENT_TABLE = "recipe_ingredient";
     private static final String COMMENT_TABLE = "comment";
+    private static final String MEDIA_TABLE = "media";
 
 
 
@@ -46,6 +47,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 " FOREIGN KEY(User_id) REFERENCES user_reg(id)," +
                 " FOREIGN KEY(Recipe_id) REFERENCES recipe(id))";
 
+        String media = "CREATE TABLE " + MEDIA_TABLE + " (id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                "Recipe_id INTEGER, media_files TEXT, FOREIGN KEY(Recipe_id) REFERENCES recipe(id))";
 
         db.execSQL("PRAGMA foreign_keys=ON;");
         db.execSQL(user_reg);
@@ -54,6 +57,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(recipe);
         db.execSQL(recipe_ingredient);
         db.execSQL(comment);
+        db.execSQL(media);
 
     }
 
@@ -65,6 +69,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + INGREDIENT_TABLE);
         db.execSQL("DROP TABLE IF EXISTS " + RECIPE_INGREDIENT_TABLE);
         db.execSQL("DROP TABLE IF EXISTS " + COMMENT_TABLE);
+        db.execSQL("DROP TABLE IF EXISTS " + MEDIA_TABLE);
         onCreate(db);
     }
 
