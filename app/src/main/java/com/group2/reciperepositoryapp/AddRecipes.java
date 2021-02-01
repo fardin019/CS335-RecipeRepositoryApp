@@ -3,6 +3,8 @@ package com.group2.reciperepositoryapp;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.EditText;
 
 public class AddRecipes extends AppCompatActivity {
 
@@ -11,4 +13,28 @@ public class AddRecipes extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_addrecipes);
     }
+    EditText addRecipetxt=(EditText) findViewById(R.id.editTextTextMultiLine);
+    String RecipeName = addRecipetxt.getText().toString();//add recipe name
+
+    EditText addIngredient1=(EditText) findViewById(R.id.editTextTextPersonName6);
+    String Ingredient1= addIngredient1.getText().toString();//add ingredient no1
+
+    EditText addIngredient2=(EditText) findViewById(R.id.editTextTextPersonName3);
+    String Ingredient2= addIngredient2.getText().toString();//add ingredient no2
+
+    EditText addIngredient3=(EditText) findViewById(R.id.editTextTextPersonName7);
+    String Ingredient3= addIngredient3.getText().toString();//add ingredient no3
+
+    EditText addIngredient4=(EditText) findViewById(R.id.editTextTextPersonName8);
+    String Ingredient4= addIngredient4.getText().toString();//add ingredient no4
+
+    EditText addIngredient5=(EditText) findViewById(R.id.editTextTextPersonName9);
+    String Ingredient5= addIngredient5.getText().toString();//add ingredient no5
+
+    EditText addIngredient6=(EditText) findViewById(R.id.editTextTextPersonName10);
+    String Ingredient6= addIngredient6.getText().toString();//add ingredient no6
+
+    EditText addIngredient7=(EditText) findViewById(R.id.editTextTextPersonName11);
+    String Ingredient7= addIngredient7.getText().toString();//add ingredient no7
+
 }
