@@ -24,6 +24,8 @@ public class LauncherActivity extends AppCompatActivity {
 
                 Intent intent = new Intent(LauncherActivity.this , HomeActivity.class);
                 startActivity(intent);
+                finish();
+
 
 
             }
