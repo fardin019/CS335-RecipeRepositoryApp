@@ -16,9 +16,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 
 
-    DatabaseHelper(Context context) {
+    DatabaseHelper(String database_name, Context context, int i) {
         super(context, DATABASE_NAME, null, 1);
     }
+
+
 
     @Override
     public void onCreate(SQLiteDatabase db) {
@@ -70,4 +72,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     //Guys use this class to put your CRUD methods for your use
     //Start here and below
+    public void addQuantity(){};
+    public void addIngredient(){};
+    public void addRecipeName(){};
 }
