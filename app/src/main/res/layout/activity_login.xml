@@ -11,8 +11,8 @@
         android:id="@+id/editTextName"
         android:layout_width="match_parent"
         android:layout_height="52dp"
-        android:background=""
-        android:drawableLeft=""
+
+
         android:ems="10"
         android:hint="@string/username_hint"
         android:inputType="textPersonName"
@@ -27,8 +27,7 @@
         android:id="@+id/editTextPassword"
         android:layout_width="match_parent"
         android:layout_height="52dp"
-        android:background=""
-        android:drawableLeft=""
+
         android:ems="10"
         android:hint="@string/password_hint"
         android:inputType="textPassword"
