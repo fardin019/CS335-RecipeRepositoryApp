@@ -2,6 +2,7 @@ package com.group2.reciperepositoryapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -9,7 +10,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import com.group2.reciperepositoryapp.DatabaseHelper;
 
+
 public class AddRecipes extends AppCompatActivity {
+    DatabaseHelper dtb1= new DatabaseHelper(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,7 +75,6 @@ public class AddRecipes extends AppCompatActivity {
         btn2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DatabaseHelper dtb1=new DatabaseHelper("recipe_database",null,1);
                  dtb1.addQuantity();
                  dtb1.addIngredient();
                  dtb1.addRecipeName();
@@ -83,5 +85,6 @@ public class AddRecipes extends AppCompatActivity {
     private void getNewSheets() {
         Intent intent = new Intent(this, AddRecipes.class);
     }
+
 
 }

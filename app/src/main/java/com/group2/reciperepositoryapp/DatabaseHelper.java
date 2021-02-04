@@ -3,6 +3,7 @@ package com.group2.reciperepositoryapp;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.view.View;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "recipe_database";
@@ -16,9 +17,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 
 
-    DatabaseHelper(String database_name, Context context, int i) {
+    public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, 1);
     }
+
 
 
 
