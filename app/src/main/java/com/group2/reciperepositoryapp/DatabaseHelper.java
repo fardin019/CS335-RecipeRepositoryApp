@@ -15,13 +15,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String COMMENT_TABLE = "comment";
 
 
-
-
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, 1);
     }
-
-
 
 
     @Override
@@ -74,7 +70,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     //Guys use this class to put your CRUD methods for your use
     //Start here and below
-    public void addQuantity(){};
-    public void addIngredient(){};
-    public void addRecipeName(){};
+
+    public void addIngrRecQuantity() {
+        String sql4 = "INSERT INTO CATEGORY_TABLE(Name) VALUES(?)";//QUERY TO INSERT CATEGORIES TO CATEGORY TABLE
+        String getCATID="SELECT CATEGORY_ID FROM CATEGORY_TABLE WHERE CATEGORY_ID =(SELECT COUNT(CATEGORY_ID) FROM CATEGORY_TABLE)";
+        String sql1 = "INSERT INTO INGREDIENT_TABLE(Name) VALUES(?)";//QUERY TO INSERT INGREDIENTS TO INGREDIENT TABLE
+        String getiNGREDIENTID="SELECT INGREDIENT_ID FROM INGREDIENT_TABLE WHERE INGREDIENT_ID =(SELECT COUNT(INGREDIENT_ID) FROM RECIPE_TABLE)";
+        String sql2 = "INSERT INTO RECIPE_TABLE(Name, Description,category_id,user_id) VALUES(?,?,?,?)";//QUERY TO INSERT RECIPES TO RECIPES TABLE
+        String getRecipeID="SELECT RECIPE_ID FROM RECIPE_TABLE WHERE RECIPE_ID =(SELECT COUNT(RECIPE_ID) FROM INGREDIENT_TABLE)";
+
+        String sql3 = "INSERT INTO RECIPE_INGREDIENT_TABLE (Recipe_id,Ingredient_id,Quantity) VALUES(?,?,?);";
+    }
 }
