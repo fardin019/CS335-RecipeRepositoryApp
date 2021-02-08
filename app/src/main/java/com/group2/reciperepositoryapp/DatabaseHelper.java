@@ -77,7 +77,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
         ArrayList IngredientID = getIngredientID();
         String IngredientId1 = (String) IngredientID.get(0), IngredientId2 = (String) IngredientID.get(1), IngredientId3 = (String) IngredientID.get(2), IngredientId4 = (String) IngredientID.get(3), IngredientId5 = (String) IngredientID.get(4), IngredientId6 = (String) IngredientID.get(5), IngredientId7 = (String) IngredientID.get(6);
-        String RecipeID1 = null, RecipeID2 = null, RecipeID3 = null, RecipeID4 = null, RecipeID5 = null, RecipeID6 = null, RecipeID7 = null;
+        String RecipeID1 =getRecipeID();
 
         values.put("Quantity", Quantity1);
         values.put("Ingredient_id", IngredientId1);
@@ -86,32 +86,32 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         values.put("Quantity", Quantity2);
         values.put("Ingredient_id", IngredientId2);
-        values.put("Recipe_id", RecipeID2);
+        values.put("Recipe_id", RecipeID1);
         long result2 = db.insert("recipe_ingredient", null, values);
 
         values.put("Quantity", Quantity3);
         values.put("Ingredient_id", IngredientId3);
-        values.put("Recipe_id", RecipeID3);
+        values.put("Recipe_id", RecipeID1);
         long result3 = db.insert("recipe_ingredient", null, values);
 
         values.put("Quantity", Quantity4);
         values.put("Ingredient_id", IngredientId4);
-        values.put("Recipe_id", RecipeID4);
+        values.put("Recipe_id", RecipeID1);
         long result4 = db.insert("recipe_ingredient", null, values);
 
         values.put("Quantity", Quantity5);
         values.put("Ingredient_id", IngredientId5);
-        values.put("Recipe_id", RecipeID5);
+        values.put("Recipe_id", RecipeID1);
         long result5 = db.insert("recipe_ingredient", null, values);
 
         values.put("Quantity", Quantity6);
         values.put("Ingredient_id", IngredientId6);
-        values.put("Recipe_id", RecipeID6);
+        values.put("Recipe_id", RecipeID1);
         long result6 = db.insert("recipe_ingredient", null, values);
 
         values.put("Quantity", Quantity7);
         values.put("Ingredient_id", IngredientId7);
-        values.put("Recipe_id", RecipeID7);
+        values.put("Recipe_id", RecipeID1);
         long result7 = db.insert("recipe_ingredient", null, values);
 
         db.close();
@@ -139,6 +139,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.close();
 
         return list;
+    }
+    public String getRecipeID() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String RecipeIDQuery = "SELECT Recipe_id FROM RECIPE_TABLE WHERE Recipe_id>= Count(Recipe_id)-1 ;";
+        Cursor cursor = db.rawQuery(RecipeIDQuery, null);
+        String RecipeID = cursor.getString(cursor.getColumnIndex("Recipe_id"));
+        cursor.close();
+        db.close();
+        return RecipeID;
     }
 
     public void addIngredient() {
