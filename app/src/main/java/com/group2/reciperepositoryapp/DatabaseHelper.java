@@ -1,9 +1,12 @@
 package com.group2.reciperepositoryapp;
 
+import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.view.View;
+
+import java.util.ArrayList;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "recipe_database";
@@ -13,7 +16,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String INGREDIENT_TABLE = "ingredient";
     private static final String RECIPE_INGREDIENT_TABLE = "recipe_ingredient";
     private static final String COMMENT_TABLE = "comment";
-
 
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, 1);
@@ -70,15 +72,81 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     //Guys use this class to put your CRUD methods for your use
     //Start here and below
+    public boolean addQuantity(String Quantity1, String Quantity2, String Quantity3, String Quantity4, String Quantity5, String Quantity6, String Quantity7) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        ArrayList IngredientID = getIngredientID();
+        String IngredientId1 = (String) IngredientID.get(0), IngredientId2 = (String) IngredientID.get(1), IngredientId3 = (String) IngredientID.get(2), IngredientId4 = (String) IngredientID.get(3), IngredientId5 = (String) IngredientID.get(4), IngredientId6 = (String) IngredientID.get(5), IngredientId7 = (String) IngredientID.get(6);
+        String RecipeID1 = null, RecipeID2 = null, RecipeID3 = null, RecipeID4 = null, RecipeID5 = null, RecipeID6 = null, RecipeID7 = null;
 
-    public void addIngrRecQuantity() {
-        String sql4 = "INSERT INTO CATEGORY_TABLE(Name) VALUES(?)";//QUERY TO INSERT CATEGORIES TO CATEGORY TABLE
-        String getCATID="SELECT CATEGORY_ID FROM CATEGORY_TABLE WHERE CATEGORY_ID =(SELECT COUNT(CATEGORY_ID) FROM CATEGORY_TABLE)";
-        String sql1 = "INSERT INTO INGREDIENT_TABLE(Name) VALUES(?)";//QUERY TO INSERT INGREDIENTS TO INGREDIENT TABLE
-        String getiNGREDIENTID="SELECT INGREDIENT_ID FROM INGREDIENT_TABLE WHERE INGREDIENT_ID =(SELECT COUNT(INGREDIENT_ID) FROM RECIPE_TABLE)";
-        String sql2 = "INSERT INTO RECIPE_TABLE(Name, Description,category_id,user_id) VALUES(?,?,?,?)";//QUERY TO INSERT RECIPES TO RECIPES TABLE
-        String getRecipeID="SELECT RECIPE_ID FROM RECIPE_TABLE WHERE RECIPE_ID =(SELECT COUNT(RECIPE_ID) FROM INGREDIENT_TABLE)";
+        values.put("Quantity", Quantity1);
+        values.put("Ingredient_id", IngredientId1);
+        values.put("Recipe_id", RecipeID1);
+        long result1 = db.insert("recipe_ingredient", null, values);
 
-        String sql3 = "INSERT INTO RECIPE_INGREDIENT_TABLE (Recipe_id,Ingredient_id,Quantity) VALUES(?,?,?);";
+        values.put("Quantity", Quantity2);
+        values.put("Ingredient_id", IngredientId2);
+        values.put("Recipe_id", RecipeID2);
+        long result2 = db.insert("recipe_ingredient", null, values);
+
+        values.put("Quantity", Quantity3);
+        values.put("Ingredient_id", IngredientId3);
+        values.put("Recipe_id", RecipeID3);
+        long result3 = db.insert("recipe_ingredient", null, values);
+
+        values.put("Quantity", Quantity4);
+        values.put("Ingredient_id", IngredientId4);
+        values.put("Recipe_id", RecipeID4);
+        long result4 = db.insert("recipe_ingredient", null, values);
+
+        values.put("Quantity", Quantity5);
+        values.put("Ingredient_id", IngredientId5);
+        values.put("Recipe_id", RecipeID5);
+        long result5 = db.insert("recipe_ingredient", null, values);
+
+        values.put("Quantity", Quantity6);
+        values.put("Ingredient_id", IngredientId6);
+        values.put("Recipe_id", RecipeID6);
+        long result6 = db.insert("recipe_ingredient", null, values);
+
+        values.put("Quantity", Quantity7);
+        values.put("Ingredient_id", IngredientId7);
+        values.put("Recipe_id", RecipeID7);
+        long result7 = db.insert("recipe_ingredient", null, values);
+
+        db.close();
+
+        if (result1 != -1 && result2 != -1 && result3 != -1 && result4 != -1 && result5 != -1 && result6 != -1 && result7 != -1)
+            return true;
+        else return false;
     }
+
+    public ArrayList getIngredientID() {
+        ArrayList list = new ArrayList();
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        String IngredientQuery = "SELECT Ingredient_id FROM INGREDIENT_TABLE WHERE Ingredient_id>= Count(Ingredient_id)-7 ;";
+
+        Cursor cursor = db.rawQuery(IngredientQuery, null);
+
+        if (cursor.getCount() > 0) {
+            while (cursor.moveToNext()) {
+                String ingredients = cursor.getString(cursor.getColumnIndex("Ingredient_id"));
+                list.add(ingredients);
+            }
+        }
+        cursor.close();
+        db.close();
+
+        return list;
+    }
+
+    public void addIngredient() {
+    }
+    public void addRecipeName(){
+
+    }
+
 }
+
+
