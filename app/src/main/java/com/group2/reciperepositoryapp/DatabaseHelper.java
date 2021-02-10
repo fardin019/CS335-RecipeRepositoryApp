@@ -150,9 +150,58 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return RecipeID;
     }
 
-    public void addIngredient() {
+    public boolean addIngredient(String Ingredient1, String Ingredient2, String Ingredient3, String Ingredient4, String Ingredient5, String Ingredient6, String Ingredient7) {
+            SQLiteDatabase db = this.getWritableDatabase();
+            ContentValues values = new ContentValues();
+            String RecipeID1 =getRecipeID();
+
+            values.put("Name", Ingredient1);
+            values.put("Recipe_id", RecipeID1);
+            long result1 = db.insert("ingredient", null, values);
+
+            values.put("Name", Ingredient2);
+            values.put("Recipe_id", RecipeID1);
+            long result2 = db.insert("ingredient", null, values);
+
+            values.put("Name", Ingredient3);
+            values.put("Recipe_id", RecipeID1);
+            long result3 = db.insert("ingredient", null, values);
+
+            values.put("Name", Ingredient4);
+            values.put("Recipe_id", RecipeID1);
+            long result4 = db.insert("ingredient", null, values);
+
+            values.put("Name", Ingredient5);
+            values.put("Recipe_id", RecipeID1);
+            long result5 = db.insert("ingredient", null, values);
+
+            values.put("Name", Ingredient6);
+            values.put("Recipe_id", RecipeID1);
+            long result6 = db.insert("ingredient", null, values);
+
+            values.put("Name", Ingredient7);
+            values.put("Recipe_id", RecipeID1);
+            long result7 = db.insert("ingredient", null, values);
+
+            db.close();
+
+            if (result1 != -1 && result2 != -1 && result3 != -1 && result4 != -1 && result5 != -1 && result6 != -1 && result7 != -1)
+                return true;
+            else return false;
     }
-    public void addRecipeName(){
+    public boolean addRecipeName(String RecipeName){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("Name", RecipeName);
+        long result1 = db.insert("recipe", null, values);
+        db.close();
+        if (result1 != -1) return true;
+        else return false;
+    }
+    public void addPhoto(){
+
+    }
+    public void addVideo(){
 
     }
 

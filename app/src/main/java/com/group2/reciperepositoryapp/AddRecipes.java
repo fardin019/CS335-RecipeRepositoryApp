@@ -75,9 +75,10 @@ public class AddRecipes extends AppCompatActivity {
         btn2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                 dtb1.addQuantity(Quantity1,Quantity2,Quantity3,Quantity4,Quantity5,Quantity6,Quantity7);
-                 dtb1.addIngredient();
-                 dtb1.addRecipeName();
+                dtb1.addRecipeName();
+                dtb1.addIngredient(Ingredient1,Ingredient2,Ingredient3,Ingredient4,Ingredient5,Ingredient6,Ingredient7);
+                dtb1.addQuantity(Quantity1,Quantity2,Quantity3,Quantity4,Quantity5,Quantity6,Quantity7);
+
             }
         });
     }
