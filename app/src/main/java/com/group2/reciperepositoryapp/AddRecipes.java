@@ -25,6 +25,9 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.util.Objects;
+
+import static java.util.Objects.*;
 
 
 public class AddRecipes extends AppCompatActivity {
@@ -38,7 +41,7 @@ public class AddRecipes extends AppCompatActivity {
         EditText addRecipetxt = (EditText) findViewById(R.id.editTextTextMultiLine);
         String RecipeName = addRecipetxt.getText().toString();//add recipe name
 
-        EditText addIngredient1 = (EditText) findViewById(R.id.editTextTextPersonName6);
+        EditText addIngredient1 = (EditText) findViewById(R.id.editTextTextPersonName);
         String Ingredient1 = addIngredient1.getText().toString();//add ingredient no1
 
         EditText addIngredient2 = (EditText) findViewById(R.id.editTextTextPersonName3);
@@ -152,7 +155,7 @@ public class AddRecipes extends AppCompatActivity {
             if (resultCode == RESULT_OK) {
                 if (requestCode == 1) {
                     File f = new File(Environment.getExternalStorageDirectory().toString());
-                    for (File temp : f.listFiles()) {
+                    for (File temp : Objects.<File[]>requireNonNull(f.listFiles())) {
                         if (temp.getName().equals("temp.jpg")) {
                             f = temp;
                             break;
@@ -176,10 +179,6 @@ public class AddRecipes extends AppCompatActivity {
                             bitmap.compress(Bitmap.CompressFormat.JPEG, 85, outFile);
                             outFile.flush();
                             outFile.close();
-                        } catch (FileNotFoundException e) {
-                            e.printStackTrace();
-                        } catch (IOException e) {
-                            e.printStackTrace();
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
