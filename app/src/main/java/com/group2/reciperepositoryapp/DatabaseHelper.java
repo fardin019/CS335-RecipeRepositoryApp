@@ -3,6 +3,7 @@ package com.group2.reciperepositoryapp;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.widget.TextView;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "recipe_database";
@@ -75,4 +76,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     //Guys use this class to put your CRUD methods for your use
     //Start here and below
+
+    public void getUser(TextView name, TextView email) {
+
+    }
+
 }
