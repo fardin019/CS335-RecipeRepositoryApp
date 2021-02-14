@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.graphics.Bitmap;
 import android.view.View;
 import android.widget.Toast;
 
@@ -212,19 +213,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         else return false;
     }
 
-    public void savePhoto() throws IOException {
-       /* SQLiteDatabase db = this.getWritableDatabase();
-        FileInputStream fis = new FileInputStream("/storage/sdcard/demoImage.jpg");
-        byte[] image = new byte[fis.available()];;
-        fis.read(image);
+    public void savePhoto(String image) throws IOException {
+       SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put("media_files", image);
          db.insert("media", null, values);
-        fis.close();
         db.close();
-*/
     }
-    public boolean saveVideo(View Video1){
+    /*public boolean saveVideo(View Video1){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put("media_files", String.valueOf(Video1));
@@ -232,7 +228,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.close();
         if (result1 != -1) return true;
         else return false;
-    }
+    }*/
 
 }
 
