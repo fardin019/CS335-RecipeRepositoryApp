@@ -1,6 +1,104 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/email"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".LoginActivity"><![CDATA[
 
-</ConstraintLayout>
+
+    "
+        android:ems="10"
+        android:hint="@string/username_hint"
+        android:inputType="enter fullname"
+        android:textSize="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.271" />
+
+
+
+
+
+
+
+
+
+    ]]>
+
+    <EditText
+        android:id="@+id/editTextTextPersonName"
+        android:layout_width="279dp"
+        android:layout_height="47dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Enter fullname"
+        tools:layout_editor_absoluteX="76dp"
+        tools:layout_editor_absoluteY="240dp" />
+
+    <EditText
+        android:id="@+id/editTextTextPersonName2"
+        android:layout_width="279dp"
+        android:layout_height="47dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Enter username"
+        tools:layout_editor_absoluteX="76dp"
+        tools:layout_editor_absoluteY="405dp" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Register"
+        tools:layout_editor_absoluteX="194dp"
+        tools:layout_editor_absoluteY="723dp" />
+
+    <EditText
+        android:id="@+id/editTextTextPersonName4"
+        android:layout_width="279dp"
+        android:layout_height="47dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Email"
+        tools:layout_editor_absoluteX="75dp"
+        tools:layout_editor_absoluteY="320dp" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="297dp"
+        android:layout_height="173dp"
+        app:srcCompat="@drawable/riley_escoba"
+        tools:layout_editor_absoluteX="88dp"
+        tools:layout_editor_absoluteY="16dp" />
+
+    <EditText
+        android:id="@+id/editTextTextPassword3"
+        android:layout_width="279dp"
+        android:layout_height="47dp"
+        android:ems="10"
+        android:inputType="textPassword"
+        android:text="password"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.348"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="499dp" />
+
+    <EditText
+        android:id="@+id/editTextTextPassword5"
+        android:layout_width="279dp"
+        android:layout_height="47dp"
+        android:ems="10"
+        android:inputType="textPassword"
+        android:text="password"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.351"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="572dp" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -5,4 +5,5 @@
     <string name="password_hint">Password</string>
     <string name="username_hint">UserName or email</string>
     <string name="start_button">Start</string>
+    <string name="password" />
 </resources>
