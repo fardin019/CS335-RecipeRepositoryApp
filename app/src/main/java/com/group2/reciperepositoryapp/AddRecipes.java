@@ -137,7 +137,7 @@ public class AddRecipes extends AppCompatActivity {
         btn3.setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View v) {
-                dtb1.saveVideo(v);
+               // dtb1.saveVideo(v);
             }
         });
     }
@@ -159,30 +159,16 @@ public class AddRecipes extends AppCompatActivity {
                     }
                 }
                 try {
-                    Bitmap bitmap;
-                    BitmapFactory.Options bitmapOptions = new BitmapFactory.Options();
-                    bitmap = BitmapFactory.decodeFile(f.getAbsolutePath(),
-                            bitmapOptions);
-                    //viewImage.setImageBitmap(bitmap);
-                    String path = android.os.Environment
+                    String path = Environment
                             .getExternalStorageDirectory()
                             + File.separator
                             + "Phoenix" + File.separator + "default";
-                    f.delete();
-                    OutputStream outFile = null;
-                    File file = new File(path, String.valueOf(System.currentTimeMillis()) + ".jpg");
-                    try {
-                        outFile = new FileOutputStream(file);
-                        bitmap.compress(Bitmap.CompressFormat.JPEG, 85, outFile);
-                        outFile.flush();
-                        outFile.close();
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                } catch (Exception e) {
-                    e.printStackTrace();
+                    dtb1.savePhoto(path);
+                } finally {
+                    System.out.println("Error Occurred");
                 }
-            } else if (requestCode == 2) {
+            }
+            else if (requestCode == 2) {
                 Uri selectedImage = data.getData();
                 String[] filePath = {MediaStore.Images.Media.DATA};
                 Cursor c = getContentResolver().query(selectedImage, filePath, null, null, null);
@@ -192,11 +178,7 @@ public class AddRecipes extends AppCompatActivity {
                 c.close();
                 Bitmap thumbnail = (BitmapFactory.decodeFile(picturePath));
                 BitMapToString(thumbnail);
-                try {
-                    dtb1.savePhoto (temp);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+                dtb1.savePhoto (temp);
 
             }
 
@@ -207,7 +189,7 @@ public class AddRecipes extends AppCompatActivity {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.PNG, 100, baos);
         byte[] b = baos.toByteArray();
-        String temp = Base64.encodeToString(b, Base64.DEFAULT);
+        temp = Base64.encodeToString(b, Base64.DEFAULT);
         return temp;
     }
 }

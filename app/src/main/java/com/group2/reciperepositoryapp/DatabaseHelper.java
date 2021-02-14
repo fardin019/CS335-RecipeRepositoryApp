@@ -213,7 +213,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         else return false;
     }
 
-    public void savePhoto(String image) throws IOException {
+    public void savePhoto(String image) {
        SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put("media_files", image);
