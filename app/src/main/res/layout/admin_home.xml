@@ -30,7 +30,7 @@
             android:layout_alignBottom="@id/admin_pic"
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="-87dp"
-            android:text="DashBoard"
+            android:text="Administrator DashBoard"
             android:textAlignment="center"
             android:textSize="32sp" />
 
@@ -48,7 +48,7 @@
 
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/admin_recipe"
+            android:id="@+id/add_recipe"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginLeft="16dp"
@@ -91,7 +91,7 @@
 
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/admin_user"
+            android:id="@+id/add_user"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginLeft="16dp"
@@ -133,7 +133,7 @@
 
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/admin_staffs"
+            android:id="@+id/add_admin"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginLeft="16dp"
@@ -165,7 +165,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom|center"
-                android:text="@string/add_staff"
+                android:text="Add Admin"
                 android:textAlignment="center"
                 android:textColor="#000"
                 android:textSize="18sp"
@@ -175,7 +175,7 @@
 
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/admin_logout"
+            android:id="@+id/logout"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginLeft="16dp"
@@ -207,7 +207,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom|center"
-                android:text="@string/log_out"
+                android:text="Logout"
                 android:textAlignment="center"
                 android:textColor="#000"
                 android:textSize="18sp"
