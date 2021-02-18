@@ -59,8 +59,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         String media = "CREATE TABLE " + MEDIA_TABLE + " (id INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 "Recipe_id INTEGER, media_files BLOB, FOREIGN KEY(Recipe_id) REFERENCES recipe(id))";
-
-
+                "Recipe_id INTEGER, media_files TEXT, FOREIGN KEY(Recipe_id) REFERENCES recipe(id))";
+      
         db.execSQL("PRAGMA foreign_keys=ON;");
         db.execSQL(user_reg);
         db.execSQL(category);
