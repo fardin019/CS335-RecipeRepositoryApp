@@ -138,16 +138,4 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         } else return 0;
     }
-
-    public boolean checkUsername(String username){
-
-        SQLiteDatabase db = getReadableDatabase();
-        String[] SelectionArgs = {username};
-
-        Cursor cursor = db.rawQuery("SELECT * FROM user_reg WHERE Username=?", SelectionArgs);
-
-        int cursorCount = cursor.getCount();
-
-        return cursorCount == 1;
-    }
 }
