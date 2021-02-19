@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -79,6 +80,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     //Guys use this class to put your CRUD methods for your use
     //Start here and below
+
 
 
     // Adds a new user to the database
