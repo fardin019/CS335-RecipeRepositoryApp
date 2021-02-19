@@ -13,7 +13,7 @@ import android.view.View;
 import android.widget.Button;
 
 public class LauncherActivity extends AppCompatActivity {
-    protected int SECONDS = 3;
+  protected int SECONDS = 3;
     Handler handler = new Handler();
 
 
@@ -21,6 +21,7 @@ public class LauncherActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_launcher);
+
 
         // added codes
         handler.removeCallbacks(runnable);
@@ -45,17 +46,4 @@ public class LauncherActivity extends AppCompatActivity {
         }
     };
 
-
-
-
-
-    public void openLoginActivity(){
-
-        Intent intent = new Intent(this, LoginActivity.class);
-
-
-        startActivity(intent);
-
-    }
-}
     
