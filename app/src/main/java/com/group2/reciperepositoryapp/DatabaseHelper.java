@@ -6,6 +6,8 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import java.util.ArrayList;
+
 public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "recipe_database";
     private static final String USER_TABLE = "user_reg";
@@ -138,4 +140,147 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         } else return 0;
     }
+
+
+    public boolean addQuantity(String Quantity1, String Quantity2, String Quantity3, String Quantity4, String Quantity5, String Quantity6, String Quantity7) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        ArrayList IngredientID = getIngredientID();
+        String IngredientId1 = (String) IngredientID.get(0), IngredientId2 = (String) IngredientID.get(1), IngredientId3 = (String) IngredientID.get(2), IngredientId4 = (String) IngredientID.get(3), IngredientId5 = (String) IngredientID.get(4), IngredientId6 = (String) IngredientID.get(5), IngredientId7 = (String) IngredientID.get(6);
+        String RecipeID1 =getRecipeID();
+
+        values.put("Quantity", Quantity1);
+        values.put("Ingredient_id", IngredientId1);
+        values.put("Recipe_id", RecipeID1);
+        long result1 = db.insert("recipe_ingredient", null, values);
+
+        values.put("Quantity", Quantity2);
+        values.put("Ingredient_id", IngredientId2);
+        values.put("Recipe_id", RecipeID1);
+        long result2 = db.insert("recipe_ingredient", null, values);
+
+        values.put("Quantity", Quantity3);
+        values.put("Ingredient_id", IngredientId3);
+        values.put("Recipe_id", RecipeID1);
+        long result3 = db.insert("recipe_ingredient", null, values);
+
+        values.put("Quantity", Quantity4);
+        values.put("Ingredient_id", IngredientId4);
+        values.put("Recipe_id", RecipeID1);
+        long result4 = db.insert("recipe_ingredient", null, values);
+
+        values.put("Quantity", Quantity5);
+        values.put("Ingredient_id", IngredientId5);
+        values.put("Recipe_id", RecipeID1);
+        long result5 = db.insert("recipe_ingredient", null, values);
+
+        values.put("Quantity", Quantity6);
+        values.put("Ingredient_id", IngredientId6);
+        values.put("Recipe_id", RecipeID1);
+        long result6 = db.insert("recipe_ingredient", null, values);
+
+        values.put("Quantity", Quantity7);
+        values.put("Ingredient_id", IngredientId7);
+        values.put("Recipe_id", RecipeID1);
+        long result7 = db.insert("recipe_ingredient", null, values);
+
+        db.close();
+
+        if (result1 != -1 && result2 != -1 && result3 != -1 && result4 != -1 && result5 != -1 && result6 != -1 && result7 != -1)
+            return true;
+        else return false;
+    }
+
+    public ArrayList getIngredientID() {
+        ArrayList list = new ArrayList();
+        SQLiteDatabase db = this.getReadableDatabase();
+        String IngredientQuery = "SELECT Ingredient_id FROM INGREDIENT_TABLE WHERE Ingredient_id>= Count(Ingredient_id)-7 ;";
+        Cursor cursor = db.rawQuery(IngredientQuery, null);
+        if (cursor.getCount() > 0) {
+            while (cursor.moveToNext()) {
+                String ingredients = cursor.getString(cursor.getColumnIndex("Ingredient_id"));
+                list.add(ingredients);
+            }
+        }
+        cursor.close();
+        db.close();
+        return list;
+    }
+    public String getRecipeID() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String RecipeIDQuery = "SELECT Recipe_id FROM RECIPE_TABLE WHERE Recipe_id>= Count(Recipe_id)-1 ;";
+
+        Cursor cursor = db.rawQuery(RecipeIDQuery, null);
+
+        String RecipeID = cursor.getString(cursor.getColumnIndex("Recipe_id"));
+
+        cursor.close();
+        db.close();
+        return RecipeID;
+    }
+    public boolean addIngredient(String Ingredient1, String Ingredient2, String Ingredient3, String Ingredient4, String Ingredient5, String Ingredient6, String Ingredient7) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        String RecipeID1 = getRecipeID();
+
+        values.put("Name", Ingredient1);
+        values.put("Recipe_id", RecipeID1);
+        long result1 = db.insert("ingredient", null, values);
+        values.put("Name", Ingredient2);
+        values.put("Recipe_id", RecipeID1);
+        long result2 = db.insert("ingredient", null, values);
+        values.put("Name", Ingredient3);
+        values.put("Recipe_id", RecipeID1);
+        long result3 = db.insert("ingredient", null, values);
+        values.put("Name", Ingredient4);
+        values.put("Recipe_id", RecipeID1);
+        long result4 = db.insert("ingredient", null, values);
+        values.put("Name", Ingredient5);
+        values.put("Recipe_id", RecipeID1);
+        long result5 = db.insert("ingredient", null, values);
+        values.put("Name", Ingredient6);
+        values.put("Recipe_id", RecipeID1);
+        long result6 = db.insert("ingredient", null, values);
+        values.put("Name", Ingredient7);
+        values.put("Recipe_id", RecipeID1);
+        long result7 = db.insert("ingredient", null, values);
+        db.close();
+        if (result1 != -1 && result2 != -1 && result3 != -1 && result4 != -1 && result5 != -1 && result6 != -1 && result7 != -1)
+            return true;
+        else return false;
+    }
+
+
+
+        public boolean addRecipeName(String RecipeName, int user_id, int category_id){
+            SQLiteDatabase db = this.getWritableDatabase();
+            ContentValues values = new ContentValues();
+
+            values.put("Name", RecipeName);
+            values.put("Category_id", category_id);
+            values.put("User_id", user_id);
+
+            long result1 = db.insert("recipe", null, values);
+
+            db.close();
+            return result1 != -1;
+
+        }
+
+        public void savePhoto(String image) {
+            SQLiteDatabase db = this.getWritableDatabase();
+            ContentValues values = new ContentValues();
+            values.put("media_files", image);
+            db.insert("media", null, values);
+            db.close();
+        }
+    /*public boolean saveVideo(View Video1){                "Recipe_id INTEGER, media_files TEXT, FOREIGN KEY(Recipe_id) REFERENCES recipe(id))";
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("media_files", String.valueOf(Video1));
+        long result1 = db.insert("media", null, values);
+        db.close();
+        if (result1 != -1) return true;
+        else return false;
+    }*/
 }
