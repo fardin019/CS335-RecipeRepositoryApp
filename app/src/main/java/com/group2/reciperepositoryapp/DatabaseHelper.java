@@ -143,6 +143,17 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         } else return 0;
     }
 
+    public boolean checkUsername(String username){
+
+        SQLiteDatabase db = getReadableDatabase();
+        String[] SelectionArgs = {username};
+
+        Cursor cursor = db.rawQuery("SELECT * FROM user_reg WHERE Username=?", SelectionArgs);
+
+        int cursorCount = cursor.getCount();
+
+        return cursorCount == 1;
+    }
 
     public boolean addQuantity(String Quantity1, String Quantity2, String Quantity3, String Quantity4, String Quantity5, String Quantity6, String Quantity7) {
         SQLiteDatabase db = this.getWritableDatabase();

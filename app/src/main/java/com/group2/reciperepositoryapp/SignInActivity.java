@@ -2,6 +2,7 @@ package com.group2.reciperepositoryapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -35,6 +36,16 @@ public class SignInActivity extends AppCompatActivity {
                 }
             }
 
+        });
+
+        btnLinkToRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(),
+                        RegistrationActivity.class);
+                startActivity(i);
+                finish();
+            }
         });
     }
 }

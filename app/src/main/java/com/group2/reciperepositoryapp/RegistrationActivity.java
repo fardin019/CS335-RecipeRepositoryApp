@@ -2,6 +2,7 @@ package com.group2.reciperepositoryapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -78,6 +79,16 @@ public class RegistrationActivity extends AppCompatActivity {
                     db.addUser(firstname, middlename, lastname, gender, email, username, role, password);
                 }
                 else Toast.makeText(getApplicationContext(), "Please fill all fields!", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        btnLinkToLogin.setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View view) {
+                Intent i = new Intent(getApplicationContext(),
+                        LoginActivity.class);
+                startActivity(i);
+                finish();
             }
         });
     }
