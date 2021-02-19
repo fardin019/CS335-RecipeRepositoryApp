@@ -33,6 +33,7 @@ import static java.util.Objects.*;
 
 
 public class AddRecipes extends AppCompatActivity {
+
     DatabaseHelper dtb1 = new DatabaseHelper(this);
     String temp;
 
@@ -91,6 +92,10 @@ public class AddRecipes extends AppCompatActivity {
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                int id = 0, cat_id = 0;
+                dtb1.addRecipeName(RecipeName, id, cat_id);
+                dtb1.addIngredient(Ingredient1, Ingredient2, Ingredient3, Ingredient4, Ingredient5, Ingredient6, Ingredient7);
+                dtb1.addQuantity(Quantity1, Quantity2, Quantity3, Quantity4, Quantity5, Quantity6, Quantity7);
                 getNewSheets();
             }
         });
@@ -100,91 +105,60 @@ public class AddRecipes extends AppCompatActivity {
         btn2.setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //dtb1.addRecipeName(RecipeName,);
+                int id = 1, cat_id = 1;
+                dtb1.addRecipeName(RecipeName, id, cat_id);
                 dtb1.addIngredient(Ingredient1, Ingredient2, Ingredient3, Ingredient4, Ingredient5, Ingredient6, Ingredient7);
                 dtb1.addQuantity(Quantity1, Quantity2, Quantity3, Quantity4, Quantity5, Quantity6, Quantity7);
+                Toast.makeText(getApplicationContext(), "Recipe Submitted", Toast.LENGTH_LONG).show();
+                Intent i2 = new Intent(AddRecipes.this, HomeActivity.class);
+                startActivity(i2);
 
             }
         });
-
-
         ImageButton btn3 = (ImageButton) findViewById(R.id.imageButton);
         btn3.setOnClickListener(new ImageButton.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final CharSequence[] options = {"Take Photo", "Choose from Gallery", "Cancel"};
-                AlertDialog.Builder builder = new AlertDialog.Builder(AddRecipes.this);
-                builder.setTitle("Add Photo!");
-                builder.setItems(options, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int item) {
-                        if (options[item].equals("Take Photo")) {
-                            Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                            File f = new File(android.os.Environment.getExternalStorageDirectory(), "temp.jpg");
-                            intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(f));
-                            startActivityForResult(intent, 1);
-                        } else if (options[item].equals("Choose from Gallery")) {
-                            Intent intent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                            startActivityForResult(intent, 2);
-                        } else if (options[item].equals("Cancel")) {
-                            dialog.dismiss();
-                        }
-                    }
-                });
-                builder.show();
-            }
-        });
-        ImageButton btn4 = (ImageButton) findViewById(R.id.imageButton2);
-        btn3.setOnClickListener(new Button.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-               // dtb1.saveVideo(v);
+                Intent i3 = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                File f = new File(android.os.Environment.getExternalStorageDirectory(), "temp.jpg");
+                i3.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(f));
+                startActivityForResult(i3, 1);
+
+
             }
         });
     }
 
     private void getNewSheets() {
         Intent intent = new Intent(AddRecipes.this, AddRecipes.class);
+        startActivity(intent);
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == RESULT_OK) {
-            if (requestCode == 1) {
-                File f = new File(Environment.getExternalStorageDirectory().toString());
-                for (File temp : Objects.<File[]>requireNonNull(f.listFiles())) {
-                    if (temp.getName().equals("temp.jpg")) {
-                        f = temp;
-                        break;
-                    }
-                }
-                try {
-                    String path = Environment
-                            .getExternalStorageDirectory()
-                            + File.separator
-                            + "Phoenix" + File.separator + "default";
-                    dtb1.savePhoto(path);
-                } finally {
-                    System.out.println("Error Occurred");
-                }
-            }
-            else if (requestCode == 2) {
-                Uri selectedImage = data.getData();
-                String[] filePath = {MediaStore.Images.Media.DATA};
-                Cursor c = getContentResolver().query(selectedImage, filePath, null, null, null);
-                c.moveToFirst();
-                int columnIndex = c.getColumnIndex(filePath[0]);
-                String picturePath = c.getString(columnIndex);
-                c.close();
-                Bitmap thumbnail = (BitmapFactory.decodeFile(picturePath));
-                BitMapToString(thumbnail);
-                dtb1.savePhoto (temp);
+    protected void onActivityResult(int requestCode, int resultCode,
+                                    Intent imageReturnedIntent) {
+        super.onActivityResult(requestCode, resultCode, imageReturnedIntent);
 
-            }
+        switch (requestCode) {
+            case (1):
+                if (resultCode == RESULT_OK) {
+                    Uri selectedImage = imageReturnedIntent.getData();
+                    String[] filePathColumn = {MediaStore.Images.Media.DATA};
 
+                    Cursor cursor = getContentResolver().query(
+                            selectedImage, filePathColumn, null, null, null);
+                    cursor.moveToFirst();
+
+                    int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
+                    String filePath = cursor.getString(columnIndex);
+                    cursor.close();
+                    Bitmap yourSelectedImage = BitmapFactory.decodeFile(filePath);
+                    String thumbnail=BitMapToString(yourSelectedImage);
+                    dtb1.savePhoto(thumbnail);
+                    Toast.makeText(getApplicationContext(),"Image Added",Toast.LENGTH_LONG).show();
+                }
         }
     }
+
 
     public String BitMapToString(Bitmap bitmap) {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();

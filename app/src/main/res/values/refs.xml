@@ -1,2 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <drawable name="profile" />
+    <drawable name="student_icon" />
+    <drawable name="lecturer" />
+    <drawable name="logout" />
+</resources>
