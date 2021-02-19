@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn = "navigation_view">
+    <item android:title="Menu" />
+    <item
+        android:id="@+id/app_bar_search"
+        android:icon="@drawable/ic_search_black_24dp"
+        android:title="Search"
+        app:actionViewClass="android.widget.SearchView" />
+    <group android:checkableBehavior="single">
+        <item android:id="@+id/nav_addrecipe"
+            android:icon="@drawable/ic_addrecipe"
+            android:title="Addrecipe"/>
+
+        <item android:id="@+id/nav_profile"
+            android:icon="@drawable/ic_profile"
+            android:title="Profile"/>
+        <item android:id="@+id/nav_settings"
+        android:icon="@drawable/ic_settings"
+        android:title="Settings"/>
+
+        <item android:id="@+id/nav_Exit"
+            android:icon="@drawable/ic_exit"
+            android:title="Exit"/>
+
+
+    </group>
+
+    <item android:title="Share and Update">
+        <menu>
+            <item android:id="@+id/nav_share"
+                android:icon="@drawable/ic_share"
+                android:title="Share"/>
+            <item android:id="@+id/nav_update"
+                  android:icon="@drawable/ic_update"
+                  android:title="Update"/>
+
+        </menu>
+
+    </item>
+
+</menu>
