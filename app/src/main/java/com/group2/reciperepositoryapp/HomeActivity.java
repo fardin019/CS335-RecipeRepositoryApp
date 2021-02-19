@@ -1,17 +1,14 @@
 package com.group2.reciperepositoryapp;
 
-import androidx.appcompat.app.ActionBarDrawerToggle;
+
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.view.GravityCompat;
-import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.cardview.widget.CardView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.TextView;
-import android.widget.Toolbar;
+import android.view.View;
 
 public class HomeActivity extends AppCompatActivity {
-    private DrawerLayout drawer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,49 +16,159 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
 
 
+        //search card view
+        CardView search = (CardView) findViewById(R.id.searchcardview);
+        search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openSearchActivity();
+            }
+        });
 
 
+        // add recipe card view
+
+        CardView addrecipe = (CardView) findViewById(R.id.addcardview);
+        addrecipe.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openAddRecipes();
+            }
+        });
+
+        // view recipe card view
+
+        CardView viewrecipe = (CardView) findViewById(R.id.viewrecipecardview);
+        viewrecipe.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openViewrecipeActivity();
+            }
+        });
+
+        // view recipe card view
+
+        CardView profile = (CardView) findViewById(R.id.profilecardview);
+        profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openProfileActivity();
+            }
+        });
 
 
-        Intent intent = getIntent();
-        String Name = intent.getStringExtra(LoginActivity.EXTRA_TEXT);
-        TextView Welcome_Message = (TextView) findViewById(R.id.Welcome_Message);
+        // about app card view
+
+        CardView aboutapp = (CardView) findViewById(R.id.aboutappcardview);
+        aboutapp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openAboutappActivity();
+            }
+        });
+
+        // share app card view
+
+        CardView shareapp = (CardView) findViewById(R.id.sharecardview);
+        shareapp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openShareActivity();
+            }
+        });
 
 
-       Welcome_Message.setText("Welcome "+Name);
+        // share app card view
+
+        CardView settings = (CardView) findViewById(R.id.settingscardview);
+        settings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openSettingsActivity();
+            }
+        });
+        // exit card view
+        CardView exit = (CardView) findViewById(R.id.exitcardview);
+        exit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                System.exit(0);
+            }
+        });
 
 
+    }
 
-       Toolbar toolbar = findViewById(R.id.toolbar);
-      setSupportActionBar(R.id.toolbar);
-       drawer = findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this , drawer,toolbar,R.string.navigation_drawer_open,R.string.navigation_drawer_close);
-        drawer.addDrawerListener(toggle);
-        toggle.syncState();
+    //open search activity method
+
+    public void openSearchActivity() {
+
+        Intent intent = new Intent(this, SearchActivity.class);
+
+
+        startActivity(intent);
+
+    }
+
+    // open add recipe method
+
+    public void openAddRecipes() {
+
+        Intent intent = new Intent(this, AddRecipes.class);
+
+
+        startActivity(intent);
+
+    }
+
+    // open view recipe activity
+    public void openViewrecipeActivity() {
+
+        Intent intent = new Intent(this, ViewrecipeActivity.class);
+
+
+        startActivity(intent);
+
+    }
+
+    // open view profile activity
+    public void openProfileActivity() {
+
+        Intent intent = new Intent(this, ProfileActivity.class);
+
+
+        startActivity(intent);
+
+    }
+
+    // open about app activity method
+    public void openAboutappActivity() {
+
+        Intent intent = new Intent(this, AboutappActivity.class);
+
+
+        startActivity(intent);
+
+    }
+
+    // open share app activity method
+    public void openShareActivity() {
+
+        Intent intent = new Intent(this, ShareActivity.class);
+
+
+        startActivity(intent);
 
     }
 
 
-    public void onBackPressed(){
+    // open share app activity method
+    public void openSettingsActivity() {
 
-        if(drawer.isDrawerOpen(GravityCompat.START)){
-            drawer.closeDrawer(GravityCompat.START);
-        }else
-        {
-            super.onBackPressed();
-        }
-        super.onBackPressed();
+        Intent intent = new Intent(this, SettingsActivity.class);
 
+
+        startActivity(intent);
 
     }
-
-
-
-
-
-
-
-
-
-    }
-
+}
