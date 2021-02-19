@@ -28,7 +28,7 @@ public class LoginActivity extends AppCompatActivity {
 
 
     public void openHomepage ( ) {
-        EditText editTextName = (EditText) findViewById(R.id.editTextName);
+        EditText editTextName = (EditText) findViewById(R.id.editTextFirstName);
         String name = editTextName.getText().toString();
         EditText editTextPassword = (EditText) findViewById(R.id.editTextPassword);
         String password = editTextPassword.getText().toString();// Password stored as plaintext, we can encrypt them
@@ -36,6 +36,9 @@ public class LoginActivity extends AppCompatActivity {
         intent.putExtra(EXTRA_TEXT, name);
 
         startActivity(intent);
+
+
+
 
 
     }

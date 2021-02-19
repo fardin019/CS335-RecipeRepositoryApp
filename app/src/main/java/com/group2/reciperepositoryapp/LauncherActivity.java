@@ -1,8 +1,16 @@
+
+
+
 package com.group2.reciperepositoryapp;
+
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.view.View;
+import android.widget.Button;
 
 public class LauncherActivity extends AppCompatActivity {
   protected int SECONDS = 3;
@@ -38,5 +46,4 @@ public class LauncherActivity extends AppCompatActivity {
         }
     };
 
-}
     
