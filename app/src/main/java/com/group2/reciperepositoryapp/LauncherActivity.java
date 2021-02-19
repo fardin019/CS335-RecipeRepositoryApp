@@ -9,6 +9,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.View;
+import android.widget.Button;
 
 public class LauncherActivity extends AppCompatActivity {
     protected int SECONDS = 3;
@@ -43,24 +45,7 @@ public class LauncherActivity extends AppCompatActivity {
         }
     };
 
-}
-         @Override
-        protected void onCreate(Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
-            setContentView(R.layout.activity_launcher);
-            Button startbtn = (Button) this.<View>findViewById(R.id.start_buttonid);
-           startbtn.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    openLoginActivity();
 
-
-                }
-            });
-
-
-
-        }
 
 
 

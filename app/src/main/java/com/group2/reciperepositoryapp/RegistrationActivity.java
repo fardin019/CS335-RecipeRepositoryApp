@@ -67,7 +67,7 @@ public class RegistrationActivity extends AppCompatActivity {
                 String middlename = inputMiddlename.getText().toString().trim();
                 String lastname = inputLastname.getText().toString().trim();
                 String username = inputUsername.getText().toString().trim();
-                String role = "User";
+                String role = "Admin";
                 String email = inputEmail.getText().toString().trim();
                 String password = inputPassword.getText().toString().trim();
 

@@ -30,7 +30,19 @@ public class SignInActivity extends AppCompatActivity {
                 String password = inputPassword.getText().toString().trim();
 
                 if (!username.isEmpty() && !password.isEmpty()) {
-                    db.authUser(username, password);
+                    int where_to = db.authUser(username, password);
+                    if(where_to == 1) {
+                        Intent i = new Intent(getApplicationContext(), AdminHomeActivity.class);
+                        startActivity(i);
+                        finish();
+                    }
+                    else if(where_to == 2){
+                        Intent i = new Intent(getApplicationContext(), RegistrationActivity.class);
+                        startActivity(i);
+                        finish();
+                    }
+                    else Toast.makeText(getApplicationContext(),"Something went wrong please try again!", Toast.LENGTH_LONG).show();
+
                 } else {
                     Toast.makeText(getApplicationContext(),"Please enter your valid Username and Password!", Toast.LENGTH_LONG).show();
                 }

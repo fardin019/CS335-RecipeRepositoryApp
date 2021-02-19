@@ -20,7 +20,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            app:srcCompat="@drawable/profile"
             tools:srcCompat="@tools:sample/avatars" />
 
         <TextView
@@ -72,7 +71,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    app:srcCompat="@drawable/courses"
                     tools:srcCompat="@tools:sample/avatars" />
 
             </LinearLayout>
@@ -91,7 +89,7 @@
 
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/add_user"
+            android:id="@+id/add_category"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginLeft="16dp"
@@ -114,8 +112,7 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    app:srcCompat="@drawable/student_icon" />
+                    android:layout_gravity="center_horizontal" />
 
             </LinearLayout>
 
@@ -156,8 +153,7 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    app:srcCompat="@drawable/lecturer" />
+                    android:layout_gravity="center_horizontal" />
 
             </LinearLayout>
 
@@ -198,8 +194,7 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    app:srcCompat="@drawable/logout" />
+                    android:layout_gravity="center_horizontal" />
 
             </LinearLayout>
 
