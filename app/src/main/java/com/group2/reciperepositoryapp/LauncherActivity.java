@@ -5,8 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
 public class LauncherActivity extends AppCompatActivity {
-
-   protected int SECONDS = 2;
+  protected int SECONDS = 3;
     Handler handler = new Handler();
 
 
