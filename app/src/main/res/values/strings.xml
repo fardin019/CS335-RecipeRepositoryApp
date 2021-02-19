@@ -5,14 +5,8 @@
     <string name="password_hint">Password</string>
     <string name="username_hint">UserName or email</string>
     <string name="launcher_msg">WELCOME TO RECIPE REPOSITORY APP</string>
-    <string name="navigation_drawer_open">open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="start_button">Start</string>
-    <string name="textviewname">Username</string>
-    <string name="textviewpassword">Password</string>
-    <string name="donthaveacctxt">You don\'t have account ?</string>
-    <string name="gotosignupbtntxt">Signup</string>
-
-
     <string name="MessageToaster">Done</string>
+    <string name="start_button">Start</string>
+    <string name="password" />
 </resources>
+

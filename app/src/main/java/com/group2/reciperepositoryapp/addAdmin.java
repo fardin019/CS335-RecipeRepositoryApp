@@ -2,7 +2,6 @@ package com.group2.reciperepositoryapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -12,13 +11,12 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Toast;
 
-public class RegistrationActivity extends AppCompatActivity {
+public class addAdmin extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_registration);
-
+        setContentView(R.layout.activity_add_admin);
 
         EditText inputFirstname = findViewById(R.id.firstname);
         EditText inputMiddlename = findViewById(R.id.middlename);
@@ -31,7 +29,6 @@ public class RegistrationActivity extends AppCompatActivity {
         RadioButton female = findViewById(R.id.rdbFemale);
 
         Button btnRegister = findViewById(R.id.btnRegister);
-        Button btnLinkToLogin = findViewById(R.id.btnLinkToLoginScreen);
 
         DatabaseHelper db = new DatabaseHelper(this);
 
@@ -66,7 +63,7 @@ public class RegistrationActivity extends AppCompatActivity {
                 String middlename = inputMiddlename.getText().toString().trim();
                 String lastname = inputLastname.getText().toString().trim();
                 String username = inputUsername.getText().toString().trim();
-                String role = "User";
+                String role = "Admin";
                 String email = inputEmail.getText().toString().trim();
                 String password = inputPassword.getText().toString().trim();
 
@@ -81,14 +78,5 @@ public class RegistrationActivity extends AppCompatActivity {
             }
         });
 
-        btnLinkToLogin.setOnClickListener(new View.OnClickListener() {
-
-            public void onClick(View view) {
-                Intent i = new Intent(getApplicationContext(),
-                        LoginActivity.class);
-                startActivity(i);
-                finish();
-            }
-        });
     }
 }

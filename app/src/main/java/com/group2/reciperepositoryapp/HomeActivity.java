@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 
 public class HomeActivity extends AppCompatActivity {
+    String username = getIntent().getStringExtra("user_id");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,8 +17,9 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
 
 
+
         //search card view
-        CardView search = (CardView) findViewById(R.id.searchcardview);
+        CardView search = (CardView) findViewById(R.id.addcategorycardview);
         search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -28,7 +30,7 @@ public class HomeActivity extends AppCompatActivity {
 
         // add recipe card view
 
-        CardView addrecipe = (CardView) findViewById(R.id.addcardview);
+        CardView addrecipe = (CardView) findViewById(R.id.addadmincardview);
         addrecipe.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -115,7 +117,7 @@ public class HomeActivity extends AppCompatActivity {
     public void openAddRecipes() {
 
         Intent intent = new Intent(this, AddRecipes.class);
-
+        intent.putExtra("user_id", username);
 
         startActivity(intent);
 
