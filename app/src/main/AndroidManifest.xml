@@ -16,17 +16,20 @@
             android:name=".LauncherActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
-            tools:ignore="ExtraText">
-        <activity android:name=".SignInActivity"></activity>
-        <activity android:name=".RegistrationActivity" />
-        <activity android:name=".AdminHomeActivity" />
-        <activity android:name=".MainActivity">
+           >
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
+            </activity>
+        <activity android:name=".SignInActivity"></activity>
+        <activity android:name=".RegistrationActivity" />
+        <activity android:name=".AdminHomeActivity" />
+
+
+
     </application>
 
 </manifest>
