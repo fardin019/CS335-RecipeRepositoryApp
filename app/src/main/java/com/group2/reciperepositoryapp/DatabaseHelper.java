@@ -85,67 +85,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     //Guys use this class to put your CRUD methods for your use
     //Start here and below
-
-
-    // Adds a new user to the database
-    public boolean addUser(String fname, String mname, String lname, String gen,
-                           String email, String username, String role, String pass) {
-
-        SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues values = new ContentValues();
-
-        values.put("FirstName", fname);
-        values.put("MiddleName", mname);
-        values.put("LastName", lname);
-        values.put("Gender", gen);
-        values.put("Email", email);
-        values.put("Role", role);
-        values.put("Username", username);
-        values.put("Password", pass);
-
-        long result = db.insert(USER_TABLE, null, values);
-
-        db.close();
-
-        return result != -1;
-    }
-
-
-    //checks user credentials for login
-    public int authUser(String username, String password) {
-
-        SQLiteDatabase db = getReadableDatabase();
-        String[] SelectionArgs = {username, password};
-
-        Cursor cursor = db.rawQuery("SELECT * FROM user_reg WHERE Username=? AND Password=?", SelectionArgs);
-
-
-        String cursorText = "";
-        int cursorCount = cursor.getCount();
-
-        if (cursor.moveToFirst()){
-            do {
-                cursorText = cursor.getString(6);
-            }
-            while (cursor.moveToNext());
-        }
-
-
-        cursor.close();
-        db.close();
-
-        if (cursorCount > 0) {
-            switch (cursorText) {
-                case "Admin":
-                    return 1;
-                case "User":
-                    return 2;
-                default:
-                    return 0;
-            }
-
-        } else return 0;
-    }
     public boolean addQuantity(String Quantity1, String Quantity2, String Quantity3, String Quantity4, String Quantity5, String Quantity6, String Quantity7) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
