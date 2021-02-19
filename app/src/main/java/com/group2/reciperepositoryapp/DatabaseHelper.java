@@ -59,8 +59,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         String media = "CREATE TABLE " + MEDIA_TABLE + " (id INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 "Recipe_id INTEGER, media_files BLOB, FOREIGN KEY(Recipe_id) REFERENCES recipe(id))";
-                "Recipe_id INTEGER, media_files TEXT, FOREIGN KEY(Recipe_id) REFERENCES recipe(id))";
-      
+
         db.execSQL("PRAGMA foreign_keys=ON;");
         db.execSQL(user_reg);
         db.execSQL(category);
@@ -157,8 +156,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public String getRecipeID() {
         SQLiteDatabase db = this.getReadableDatabase();
         String RecipeIDQuery = "SELECT Recipe_id FROM RECIPE_TABLE WHERE Recipe_id>= Count(Recipe_id)-1 ;";
+
         Cursor cursor = db.rawQuery(RecipeIDQuery, null);
+
         String RecipeID = cursor.getString(cursor.getColumnIndex("Recipe_id"));
+
         cursor.close();
         db.close();
         return RecipeID;
@@ -167,7 +169,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public boolean addIngredient(String Ingredient1, String Ingredient2, String Ingredient3, String Ingredient4, String Ingredient5, String Ingredient6, String Ingredient7) {
             SQLiteDatabase db = this.getWritableDatabase();
             ContentValues values = new ContentValues();
-            String RecipeID1 =getRecipeID();
+            String RecipeID1 = getRecipeID();
 
             values.put("Name", Ingredient1);
             values.put("Recipe_id", RecipeID1);
@@ -203,14 +205,19 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 return true;
             else return false;
     }
-    public boolean addRecipeName(String RecipeName){
+    public boolean addRecipeName(String RecipeName, int user_id, int category_id){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
+
         values.put("Name", RecipeName);
+        values.put("Category_id", category_id);
+        values.put("User_id", user_id);
+
         long result1 = db.insert("recipe", null, values);
+
         db.close();
-        if (result1 != -1) return true;
-        else return false;
+
+        return result1 != -1;
     }
 
     public void savePhoto(String image) {
@@ -220,7 +227,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
          db.insert("media", null, values);
         db.close();
     }
-    /*public boolean saveVideo(View Video1){
+    /*public boolean saveVideo(View Video1){                "Recipe_id INTEGER, media_files TEXT, FOREIGN KEY(Recipe_id) REFERENCES recipe(id))";
+
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put("media_files", String.valueOf(Video1));

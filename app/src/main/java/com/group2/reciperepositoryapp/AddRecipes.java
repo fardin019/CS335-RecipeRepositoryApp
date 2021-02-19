@@ -35,6 +35,7 @@ import static java.util.Objects.*;
 public class AddRecipes extends AppCompatActivity {
     DatabaseHelper dtb1 = new DatabaseHelper(this);
     String temp;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -99,7 +100,7 @@ public class AddRecipes extends AppCompatActivity {
         btn2.setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View v) {
-                dtb1.addRecipeName(RecipeName);
+                //dtb1.addRecipeName(RecipeName,);
                 dtb1.addIngredient(Ingredient1, Ingredient2, Ingredient3, Ingredient4, Ingredient5, Ingredient6, Ingredient7);
                 dtb1.addQuantity(Quantity1, Quantity2, Quantity3, Quantity4, Quantity5, Quantity6, Quantity7);
 
