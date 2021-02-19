@@ -17,7 +17,7 @@ public class SignInActivity extends AppCompatActivity {
         setContentView(R.layout.activity_sign_in);
 
         EditText inputUsername = findViewById(R.id.email);
-        EditText inputPassword = findViewById(R.id.password);
+        EditText inputPassword = findViewById(R.id.category);
         Button btnLogin = findViewById(R.id.btnLogin);
         Button btnLinkToRegister = findViewById(R.id.btnLinkToRegisterScreen);
 
@@ -37,7 +37,8 @@ public class SignInActivity extends AppCompatActivity {
                         finish();
                     }
                     else if(where_to == 2){
-                        Intent i = new Intent(getApplicationContext(), RegistrationActivity.class);
+                        Intent i = new Intent(getApplicationContext(), HomeActivity.class);
+                        i.putExtra("user_id",username);
                         startActivity(i);
                         finish();
                     }

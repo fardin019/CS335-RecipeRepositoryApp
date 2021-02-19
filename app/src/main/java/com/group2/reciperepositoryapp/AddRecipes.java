@@ -35,6 +35,8 @@ import static java.util.Objects.*;
 public class AddRecipes extends AppCompatActivity {
     DatabaseHelper dtb1 = new DatabaseHelper(this);
     String temp;
+    
+    String username = getIntent().getStringExtra("user_id");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

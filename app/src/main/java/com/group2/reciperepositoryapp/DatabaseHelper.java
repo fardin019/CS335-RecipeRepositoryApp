@@ -107,6 +107,48 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
+    public boolean addCategory(String name){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put("Name", name);
+
+        long result = db.insert(CATEGORY_TABLE, null, values);
+
+        db.close();
+
+        return result != -1;
+    }
+
+    public int getCategoryId(String name){
+        SQLiteDatabase db = getReadableDatabase();
+        String[] SelectionArgs = {name};
+
+        Cursor cursor = db.rawQuery("SELECT * FROM category WHERE Name=?", SelectionArgs);
+
+        int id = cursor.getInt(cursor.getColumnIndex("id"));
+
+        return id;
+    }
+
+    public ArrayList<String> getAllCategories(){
+
+        ArrayList<String> list = new ArrayList<>();
+        SQLiteDatabase db = getReadableDatabase();
+
+        Cursor cursor = db.rawQuery("SELECT * FROM category", null);
+
+        if (cursor.getCount() > 0) {
+            while (cursor.moveToNext()) {
+                String categories = cursor.getString(cursor.getColumnIndex("Name"));
+                list.add(categories);
+            }
+        }
+        cursor.close();
+        db.close();
+        return list;
+    }
+
     //checks user credentials for login
     public int authUser(String username, String password) {
 
@@ -141,6 +183,17 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             }
 
         } else return 0;
+    }
+
+    public int getUserId(String username){
+        SQLiteDatabase db = getReadableDatabase();
+        String[] SelectionArgs = {username};
+
+        Cursor cursor = db.rawQuery("SELECT * FROM user_reg WHERE Name=?", SelectionArgs);
+
+        int id = cursor.getInt(cursor.getColumnIndex("id"));
+
+        return id;
     }
 
     public boolean checkUsername(String username){
