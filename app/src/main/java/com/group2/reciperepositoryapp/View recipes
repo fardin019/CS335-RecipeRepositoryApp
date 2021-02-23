@@ -1,0 +1,28 @@
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Bundle;
+
+public class ViewRecipes extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_viewrecipes);
+    }
+}
+    public ImageLoader(Context context) {
+        fileCache = new FileCache(context);
+        executorService = Executors.newFixedThreadPool(5);
+    }
+48
+final int stub_id = R.drawable.temp_img;
+public void DisplayImage(String url, ImageView imageView) {
+        imageViews.put(imageView, url);
+        Bitmap bitmap = memoryCache.get(url);
+        if (bitmap != null)
+        imageView.setImageBitmap(bitmap);
+        else {
+        queuePhoto(url, imageView);
+        imageView.setImageResource(stub_id);
+        }
+        }
